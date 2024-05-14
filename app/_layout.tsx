@@ -6,15 +6,15 @@ SplashScreen.preventAutoHideAsync();
 
 const RootLayout = () => {
   const [fontsLoaded, error] = useFonts({
-    "Poopins-Black": require('../assets/fonts/Poopins-Black.ttf'),
-    "Poopins-Bold": require('../assets/fonts/Poopins-Bold.ttf'),
-    "Poopins-Light": require('../assets/fonts/Poopins-Light.ttf'),
-    "Poopins-Regular": require('../assets/fonts/Poopins-Regular.ttf'),
-    "Poopins-SemiBold": require('../assets/fonts/Poopins-SemiBold.ttf'),
-    "Poopins-ExtraBold": require('../assets/fonts/Poopins-ExtraBold.ttf'),
-    "Poopins-Medium": require('../assets/fonts/Poopins-Medium.ttf'),
-    "Poopins-Thin": require('../assets/fonts/Poopins-Thin.ttf'),
-    "Poopins-ExtraLight": require('../assets/fonts/Poopins-ExtraLight.ttf'),
+    "Poppins-Black": require('../assets/fonts/Poppins-Black.ttf'),
+    "Poppins-Bold": require('../assets/fonts/Poppins-Bold.ttf'),
+    "Poppins-Light": require('../assets/fonts/Poppins-Light.ttf'),
+    "Poppins-Regular": require('../assets/fonts/Poppins-Regular.ttf'),
+    "Poppins-SemiBold": require('../assets/fonts/Poppins-SemiBold.ttf'),
+    "Poppins-ExtraBold": require('../assets/fonts/Poppins-ExtraBold.ttf'),
+    "Poppins-Medium": require('../assets/fonts/Poppins-Medium.ttf'),
+    "Poppins-Thin": require('../assets/fonts/Poppins-Thin.ttf'),
+    "Poppins-ExtraLight": require('../assets/fonts/Poppins-ExtraLight.ttf'),
   });
 
   useEffect(() => {
