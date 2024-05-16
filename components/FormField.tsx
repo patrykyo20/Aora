@@ -7,8 +7,9 @@ interface FormFieldProps {
   value: string;
   placeholder: string;
   handleChangeText: (text: any) => void;
-  otherStyles: string;
-  props: any;
+  keyBoardType?: string;
+  otherStyles?: string;
+  props?: any;
 }
 
 const FormField: FC<FormFieldProps> = ({
@@ -17,6 +18,7 @@ const FormField: FC<FormFieldProps> = ({
   placeholder,
   handleChangeText,
   otherStyles,
+  keyBoardType,
   ...props
 }) => {
   const [showPassword, setShowPassword] = useState(false);
