@@ -11,7 +11,7 @@ export default function App() {
   const {isLoading, isLoggedIn} = useGlobalContext();
 
   if (!isLoading && isLoggedIn) {
-    return <Redirect href='home' />;
+    return <Redirect href='/home' />;
   }
 
   return (
@@ -65,7 +65,7 @@ export default function App() {
           </Text>
           <Button
             title="Countinue with email"
-            handlePress={() => router.push('/sign-in')}
+            handlePress={() => router.push('/home')}
             containerStyles="w-full mt-7"
           />
         </View>
