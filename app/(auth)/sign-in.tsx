@@ -35,15 +35,19 @@ const SignIn= () => {
           >
             Log in to Aora
           </Text>
+
           <FormField
             title='Email'
+            placeholder='email'
             value={form.email}
             handleChangeText={(e: any) => setForm({...form, email: e})}
             otherStyles='mt-7'
-            keyboardType='email-address'
+            keyBoardType='email-address'
           />
+    
           <FormField
             title='Password'
+            placeholder='password'
             value={form.password}
             handleChangeText={(e: any) => setForm({...form, password: e})}
             otherStyles='mt-7'
