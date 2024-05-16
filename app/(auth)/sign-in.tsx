@@ -1,10 +1,11 @@
-import { ScrollView, StyleSheet, Image, View, Text } from 'react-native'
+import { ScrollView, StyleSheet, Image, View, Text, Alert } from 'react-native'
 import { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { images } from '@/constants';
 import FormField from '@/components/FormField';
 import Button from '@/components/Button';
-import { Link } from 'expo-router';
+import { Link, router } from 'expo-router';
+import { signIn } from '@/lib/appwrite';
 
 const SignIn= () => {
   const [form, setForm] = useState({
@@ -14,8 +15,25 @@ const SignIn= () => {
 
   const [isSubmiting, setIsSubmiting] = useState(false);
 
-  const submit = () => {
-    
+  const submit = async () => {
+    console.log(form);
+
+    if (form.email === "" || form.password === "") {
+      Alert.alert("Error", "Please fill in all fields");
+    }
+
+    console.log(form)
+
+    setIsSubmiting(true);
+    try {
+      signIn(form.email, form.password);
+
+      router.replace("/");
+    } catch (error: any) {
+      Alert.alert("Error", error.message);
+    } finally {
+      setIsSubmiting(false);
+    }
   };
 
   return (
@@ -44,7 +62,7 @@ const SignIn= () => {
             otherStyles='mt-7'
             keyBoardType='email-address'
           />
-    
+
           <FormField
             title='Password'
             placeholder='password'
