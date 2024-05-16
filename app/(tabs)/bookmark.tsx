@@ -9,6 +9,4 @@ const Bookmark = () => {
   )
 }
 
-export default Bookmark
-
-const styles = StyleSheet.create({})
+export default Bookmark;
