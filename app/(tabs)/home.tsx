@@ -1,4 +1,4 @@
-import { Text, FlatList, View, Image, RefreshControl } from 'react-native'
+import { Text, FlatList, View, Image, RefreshControl, Alert } from 'react-native'
 import { useState } from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context'
 
@@ -6,23 +6,35 @@ import { images } from '@/constants';
 import SearchInput from '@/components/SearchInput';
 import Trending from '@/components/Trending';
 import EmptyState from '@/components/EmptyState';
+import { getAllPosts, getLatestPosts } from '@/lib/appwrite';
+import useAppwrite from '@/hooks/useAppwrite';
 
-const Home = () => {
+import VideoCard from '@/components/VideoCard';
+
+const Home = () => {  
+  const { data: posts, isLoading, refetch} = useAppwrite(getAllPosts)
+  const { data: latestPosts} = useAppwrite(getLatestPosts)
+
+
   const [refreshing, setRefreshing] = useState(false);
 
   const onRefresh = async () => {
     setRefreshing(true);
-  }
+    console.log(posts)
+    console.log(latestPosts)
+    await refetch();
+    setRefreshing(false);
+  };
 
   return (
     <SafeAreaView
       className='bg-primary h-full'
     >
       <FlatList 
-        data={[]}
+        data={posts}
         keyExtractor={(item: any) => item.$id}
         renderItem={({ item }) => (
-          <Text className='text-white text-3xl'>{item.id}</Text>
+          <VideoCard video={item} />
         )}
         ListHeaderComponent={() => (
           <View
@@ -64,7 +76,7 @@ const Home = () => {
                 Latest Videos
               </Text>
 
-              <Trending posts={[{ id: 1}, { id: 2}, { id: 3} ?? []]} />
+              <Trending posts={latestPosts.length ? latestPosts : posts} />
             </View>
           </View>
         )}
