@@ -65,7 +65,7 @@ export default function App() {
           </Text>
           <Button
             title="Countinue with email"
-            handlePress={() => router.push('/home')}
+            handlePress={() => router.push('/sign-in')}
             containerStyles="w-full mt-7"
           />
         </View>
